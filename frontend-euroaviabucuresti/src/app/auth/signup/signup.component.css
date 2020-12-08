@@ -1,6 +1,21 @@
 .register-section {
     margin: 100px;
   }
+  .signup-failed {
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    border: 2px solid black;
+    width: 65%;
+    background-color: #ff0000;
+  }
+  
+  .signup-failed-text {
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;
+    color: aliceblue;
+  }
   
   .sign-up {
     background-color: #0079D3;
