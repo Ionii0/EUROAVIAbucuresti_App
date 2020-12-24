@@ -12,6 +12,21 @@ import {map, tap} from 'rxjs/operators';
 })
 export class AuthService {
 
+  refreshTokenPayload = {
+    refreshToken: this.getRefreshToken(),
+    mailEuroavia: this.getMailEuroavia()
+  }
+  getMailEuroavia() {
+    return this.localStorage.retrieve('mailEuroavia');
+  }
+  getRefreshToken() {
+    return this.localStorage.retrieve('refreshToken');
+  }
+
+  getJwtToken() {
+    return this.localStorage.retrieve('authenticationToken');
+  }
+
   constructor(private httpClient:HttpClient , private localStorage:LocalStorageService) { }
 
   signup(registerRequestPayload:RegisterRequestPayload) :Observable<any>{
@@ -28,5 +43,17 @@ export class AuthService {
 
       return true;
     }));
+  }
+  refreshToken() {
+    return this.httpClient.post<AuthenticationResponse>('http://localhost:8080/api/auth/refresh/token',
+      this.refreshTokenPayload)
+      .pipe(tap(response => {
+        this.localStorage.clear('authenticationToken');
+        this.localStorage.clear('expiresAt');
+
+        this.localStorage.store('authenticationToken',
+          response.authenticationToken);
+        this.localStorage.store('expiresAt', response.expiresAt);
+      }));
   }
 }
