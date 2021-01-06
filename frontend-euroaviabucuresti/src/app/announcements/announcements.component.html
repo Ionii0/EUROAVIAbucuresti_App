@@ -1,0 +1,37 @@
+
+  <div class="announcement-body " >
+      <div class="container">
+        
+        <div class="row">
+        
+          <div class="col-md-9" >
+    
+            <div class="row post" *ngFor="let announcement of announcements" >
+              
+              <div class="col-md-11 offset-md-3"  >
+                <div class="card card border-0" >
+                  <div class="card-body" >
+                    <div class="card-title">
+                      <h7 class="card-subtitle mb-2 text-muted">{{announcement.created|date:'short'}}</h7>
+                      <h5 >{{announcement.title}}</h5>
+                    </div>
+                    <div>
+                      <p class="card-text">{{announcement.body}}</p>
+                    </div>
+                  
+                    <span>
+                      <a class="btnCommments" role="button">
+                        <fa-icon [icon]="faComments"></fa-icon>
+                        Comments({{announcement.commentCount}})
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+   </div>
+

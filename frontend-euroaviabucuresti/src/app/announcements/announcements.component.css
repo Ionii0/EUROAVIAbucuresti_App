@@ -1,0 +1,26 @@
+.card{
+    border-color: #1A1918;
+    z-index:-1;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+   
+   
+    
+}
+.card-body{
+    background-color:#15202B; 
+    color:white;
+    border:solid 0.5px;
+    border-color: #1A1918;
+    
+   
+   
+}
+.announcement-body{
+    margin-top:80px;
+}
+@media only screen and (max-width: 600px) {
+    .announcement-body {
+      margin-top: 120px;
+    }
+  }

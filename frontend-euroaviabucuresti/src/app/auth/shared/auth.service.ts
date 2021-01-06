@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
-   return this.httpClient.post<AuthenticationResponse>('http://localhost:8080/api/auth/signup', loginRequestPayload).
+   return this.httpClient.post<AuthenticationResponse>('http://localhost:8080/api/auth/login', loginRequestPayload).
    pipe(map(data=>{
       this.localStorage.store('authenticationToken', data.authenticationToken);
       this.localStorage.store('mailEuroavia', data.mailEuroavia);
