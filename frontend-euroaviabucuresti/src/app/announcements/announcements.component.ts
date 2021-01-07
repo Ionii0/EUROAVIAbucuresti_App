@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnouncementModel } from '../shared/announcement-model';
 import { AnnouncementService } from '../shared/announcement.service';
-import {faComments} from '@fortawesome/free-solid-svg-icons';
+import {faComments, faEye, faPlane} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-announcements',
   templateUrl: './announcements.component.html',
@@ -10,6 +10,9 @@ import {faComments} from '@fortawesome/free-solid-svg-icons';
 export class AnnouncementsComponent implements OnInit {
   announcements: Array<AnnouncementModel>=[];
   faComments=faComments;
+  faPlane=faPlane;
+  faEye=faEye;
+  viewAll:boolean;
 
   constructor(private announcementService:AnnouncementService) { 
     this.announcementService.getAllAnnouncements().subscribe(announcement=>{

@@ -12,19 +12,33 @@
                 <div class="card card border-0" >
                   <div class="card-body" >
                     <div class="card-title">
-                      <h7 class="card-subtitle mb-2 text-muted">{{announcement.created|date:'short'}}</h7>
+                      <h7 class="card-subtitle mb-2 text-muted">{{announcement.date|date:"short"}}</h7>
                       <h5 >{{announcement.title}}</h5>
                     </div>
                     <div>
                       <p class="card-text">{{announcement.body}}</p>
                     </div>
-                  
+                    <hr style="color: #1A1918;">
                     <span>
-                      <a class="btnCommments" role="button">
+                      <a class="btnComments" role="button">
                         <fa-icon [icon]="faComments"></fa-icon>
                         Comments({{announcement.commentCount}})
                       </a>
                     </span>
+                    <span>
+                      <a class="btnParticipate" role="button">
+                        <fa-icon [icon]="faPlane"></fa-icon>
+                        Particip({{announcement.participantCount}})
+                      </a>
+                    </span>
+                    <!----
+                    <span>
+                      <a class="btnInteresting" role="button">
+                        <fa-icon [icon]="faEye"></fa-icon>
+                        Interesat(0)
+                      </a>
+                    </span>
+                    !-->
                   </div>
                 </div>
               </div>

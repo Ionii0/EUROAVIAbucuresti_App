@@ -5,4 +5,5 @@ export class AnnouncementModel{
     commentCount:number;
     body:string;
     created:string;
+    date:string;
 }
