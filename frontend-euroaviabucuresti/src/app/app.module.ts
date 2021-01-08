@@ -13,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { CreateAnnouncementComponent } from './announcements/create-announcement/create-announcement.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     SignupComponent,
     LoginComponent,
-    AnnouncementsComponent
+    AnnouncementsComponent,
+    CreateAnnouncementComponent
   ],
   imports: [
     BrowserModule,

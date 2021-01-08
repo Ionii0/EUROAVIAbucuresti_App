@@ -11,6 +11,19 @@ import {map, tap} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+ 
+  constructor(private httpClient:HttpClient , private localStorage:LocalStorageService) { }
+  logout() {
+    this.localStorage.clear('refreshToken');
+    this.localStorage.clear('mailEuroavia');
+    this.localStorage.clear('authenticationToken');
+    this.localStorage.clear('expiresAt');
+  
+  }
+
+  isAuthenticated():Boolean{
+    return this.localStorage.retrieve('mailEuroavia')!=null;
+  }
 
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
@@ -27,7 +40,6 @@ export class AuthService {
     return this.localStorage.retrieve('authenticationToken');
   }
 
-  constructor(private httpClient:HttpClient , private localStorage:LocalStorageService) { }
 
   signup(registerRequestPayload:RegisterRequestPayload) :Observable<any>{
    return this.httpClient.post('http://localhost:8080/api/auth/signup', registerRequestPayload, {responseType:'text'});

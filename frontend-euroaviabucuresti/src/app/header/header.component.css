@@ -17,7 +17,7 @@ header {
   }
   
   
-  .login, .signup {
+  .login, .signup, .logout {
     background-color: transparent;
     border-color: #0079D3;
     color: #0079D3;
