@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { CreateAnnouncementComponent } from './announcements/create-announcement/create-announcement.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CreateAnnouncementComponent } from './announcements/create-announcement
     SignupComponent,
     LoginComponent,
     AnnouncementsComponent,
-    CreateAnnouncementComponent
+    CreateAnnouncementComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

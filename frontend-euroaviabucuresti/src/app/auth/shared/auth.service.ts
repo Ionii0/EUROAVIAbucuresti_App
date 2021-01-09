@@ -13,26 +13,31 @@ import {map, tap} from 'rxjs/operators';
 export class AuthService {
  
   constructor(private httpClient:HttpClient , private localStorage:LocalStorageService) { }
+
   logout() {
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('mailEuroavia');
     this.localStorage.clear('authenticationToken');
     this.localStorage.clear('expiresAt');
-    
-  
   }
 
   isAuthenticated():Boolean{
     return this.localStorage.retrieve('mailEuroavia')!=null;
   }
 
+  isAdmin():Observable<Boolean>{
+    return this.httpClient.post<Boolean>('http://localhost:8080/api/auth/roleCheck',{responseType:'boolean'});
+  }
+
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
     mailEuroavia: this.getMailEuroavia()
   }
+
   getMailEuroavia() {
     return this.localStorage.retrieve('mailEuroavia');
   }
+
   getRefreshToken() {
     return this.localStorage.retrieve('refreshToken');
   }
