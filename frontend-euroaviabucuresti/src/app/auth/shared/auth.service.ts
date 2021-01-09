@@ -18,6 +18,7 @@ export class AuthService {
     this.localStorage.clear('mailEuroavia');
     this.localStorage.clear('authenticationToken');
     this.localStorage.clear('expiresAt');
+    
   
   }
 
