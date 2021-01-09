@@ -25,8 +25,14 @@ export class AuthService {
     return this.localStorage.retrieve('mailEuroavia')!=null;
   }
 
-  isAdmin():Observable<Boolean>{
-    return this.httpClient.post<Boolean>('http://localhost:8080/api/auth/roleCheck',{responseType:'boolean'});
+  isAdmin(): Observable<boolean>{
+   return this.httpClient.post<boolean>('http://localhost:8080/api/auth/roleCheck', { responseType: 'boolean' }).
+      pipe(map(data => {
+        if (data == true)
+          return true;
+        else
+          return false;
+      }));
   }
 
   refreshTokenPayload = {
