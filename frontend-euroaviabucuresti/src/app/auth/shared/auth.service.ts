@@ -7,6 +7,7 @@ import { AuthenticationResponse } from '../login/authentication-response.payload
 import { LocalStorageService } from 'ngx-webstorage';
 import {map, tap} from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,14 +26,8 @@ export class AuthService {
     return this.localStorage.retrieve('mailEuroavia')!=null;
   }
 
-  isAdmin(): Observable<boolean>{
-   return this.httpClient.post<boolean>('http://localhost:8080/api/auth/roleCheck', { responseType: 'boolean' }).
-      pipe(map(data => {
-        if (data == true)
-          return true;
-        else
-          return false;
-      }));
+  isAdmin(): Observable<any>{
+    return this.httpClient.post('http://localhost:8080/api/roleCheck', {responseType:'text'});
   }
 
   refreshTokenPayload = {
