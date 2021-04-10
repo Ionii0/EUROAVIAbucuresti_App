@@ -16,19 +16,25 @@
                       <h5 >{{announcement.title}}</h5>
                     </div>
                     <div>
-                      <p class="card-text">{{announcement.body}}</p>
+                      <p class="card-text" [innerHtml]="announcement.body"></p>
                     </div>
                     <hr style="color: #1A1918;">
                     <span>
-                      <a class="btnComments" role="button">
+                      <a class="btnComments" role="button" (click)="goToAnnouncement(announcement.id)">
                         <fa-icon [icon]="faComments"></fa-icon>
                         Comments({{announcement.commentCount}})
                       </a>
                     </span>
-                    <span>
-                      <a class="btnParticipate" role="button">
-                        <fa-icon [icon]="faPlane"></fa-icon>
+                    <span *ngIf="announcement.isParticipant==false">
+                      <a class="btnParticipate" role="button" (click)="participateOrWithdraw(announcement.id)">
+                        <fa-icon [icon]="faPlane" ></fa-icon>
                         Particip({{announcement.participantCount}})
+                      </a>
+                    </span>
+                    <span *ngIf="announcement.isParticipant==true">
+                      <a class="btnParticipate" role="button" (click)="participateOrWithdraw(announcement.id)">
+                        <fa-icon [icon]="faPlaneArrival" ></fa-icon>
+                        Renunt({{announcement.participantCount}})
                       </a>
                     </span>
                     <!----

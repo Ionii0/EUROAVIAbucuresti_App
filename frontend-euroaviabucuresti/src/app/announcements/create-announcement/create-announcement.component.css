@@ -1,0 +1,15 @@
+.create-announcement-heading{
+    color:#0079D3;
+}
+.btn{
+    color:#0079D3;
+    border:solid;
+    border-color:#0079D3;
+    border-radius: round;
+}
+.btn:hover{
+    background-color: #0079D3;
+    color:white;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}

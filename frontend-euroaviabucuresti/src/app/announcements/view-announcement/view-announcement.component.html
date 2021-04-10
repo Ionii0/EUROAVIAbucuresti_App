@@ -1,0 +1,65 @@
+
+  <div class="announcement-body " >
+    <div class="container">
+      
+      <div class="row">
+      
+        <div class="col-md-9" >
+  
+          <div class="row post"  >
+            
+            <div class="col-md-11 offset-md-3"  >
+              <div class="card card border-0" >
+                <div class="card-body" >
+                  <div class="card-title">
+                    <h6 class="card-subtitle mb-2 text-muted">{{announcement.date|date:"short"}}</h6>
+                    <h5 >{{announcement.title}}</h5>
+                  </div>
+                  <div>
+                    <p class="card-text" [innerHtml]="announcement.body"></p>
+                  </div>
+                  <hr style="color: #1A1918;">
+                  <span class="btnComments" role="button">
+                      <fa-icon [icon]="faComments"></fa-icon>
+                      Comments({{announcement.commentCount}})
+                  </span>
+                  <span>
+                    <a class="btnParticipate" role="button"  (click)="participateOrWithdraw(announcement.id)" >
+                      <fa-icon [icon]="faPlane"></fa-icon>
+                      Particip({{announcement.participantCount}})
+                    </a>
+                  </span>
+                  <br>
+                  <br>
+                  <div class="announcement-comment">
+                    <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+                      <div class="form-group">
+                        <textarea class="form-control" [formControlName]="'body'" placeholder="We'd like to hear your opinion"></textarea>
+                      </div>
+                      <button type="submit" class="btn comment-submit">Comment</button>
+                    </form>
+                  </div>
+                  <div style="margin-top: 60px;" *ngFor="let comment of comments">
+                    <div class="comment">
+                      <div class="mailEuroavia">
+                        <a routerLink="/user/comment.mailEuroavia">{{comment.mailEuroavia}}</a>
+                      </div>
+                      <div>
+                       <!--
+                         <p>{{comment.duration}}</p>
+                       --> 
+                      </div>
+                      <b>{{comment.body}}</b>
+                    </div>
+                    <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+ </div>
+
+

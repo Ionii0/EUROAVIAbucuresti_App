@@ -6,4 +6,5 @@ export class AnnouncementModel{
     body:string;
     created:string;
     date:string;
+    isParticipant:boolean;
 }

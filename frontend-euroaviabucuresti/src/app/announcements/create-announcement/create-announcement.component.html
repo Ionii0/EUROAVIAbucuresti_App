@@ -1,1 +1,38 @@
-<p>create-announcement works!</p>
+<div class="container">
+    <div class="row">
+      <hr />
+      <div class="create-post-container col-md-9">
+        <form class="post-form" [formGroup]="createAnnouncementForm" >
+          <div class="form-group">
+            <div class="create-announcement-heading"> <h2>Create Announcement</h2></div>
+            <hr style="background-color:#0079D3;height: 2px;"/>
+            <input type="text" [formControlName]="'title'" class="form-control" style="margin-top: 5px"
+              placeholder="Title">
+  
+            <editor [formControlName]="'body'" [init]="{
+                        height: 500,
+                        menubar: false,
+                        plugins: [
+                          'advlist autolink lists link image charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar:
+                          'undo redo | formatselect | bold italic backcolor | \
+                          alignleft aligncenter alignright alignjustify | \
+                          bullist numlist outdent indent | removeformat | help'
+                      }"></editor>
+            <span>
+              <div style="margin-top: 5px" class="float-right">
+                <button class="btn" (click)="createAnnouncement()" routerLink="/announcement-page">Post</button>
+              </div>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-3">
+        
+     
+      </div>
+    </div>
+  </div>

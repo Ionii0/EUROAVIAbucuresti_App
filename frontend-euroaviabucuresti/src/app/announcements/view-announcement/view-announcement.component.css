@@ -12,21 +12,10 @@
     border:solid 0.5px;
     border-color: #1A1918;
 }
-.admin-body{
+.announcement-body{
     margin-top:80px;
 }
-.btn{
-    color:#0079D3;
-    border:solid;
-    border-color:#0079D3;
-    border-radius: round;
-}
-.btn:hover{
-    background-color: #0079D3;
-    color:white;
-    box-sizing: border-box;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-}
+
 .btnComments{
    /* color: rgb(58, 79, 100);*/
    color:#0079D3;
@@ -37,16 +26,25 @@
    margin-left: 10px;
 }
 
-.btnComments:hover{
+.btnParticipate:hover{
     border-color: #1A1918;
     box-sizing: border-box;
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);
 }
 
-.btnParticipate:hover{
-    border-color: #1A1918;
+.comment-submit{
+    background-color: #0079D3;
+    color:white;
     box-sizing: border-box;
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.comment-submit:hover{
+    color:#0079D3;
+    border:solid;
+    border-color:#0079D3;
+    border-radius: round;
+    background-color: #15202B;
 }
 
 @media only screen and (max-width: 600px) {

@@ -16,6 +16,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { CreateAnnouncementComponent } from './announcements/create-announcement/create-announcement.component';
 import { AdminComponent } from './admin/admin.component';
 import { TokenInterceptor } from './token-interceptor';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { CommentsComponent } from './comments/comments.component';
+import { ViewAnnouncementComponent } from './announcements/view-announcement/view-announcement.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { TokenInterceptor } from './token-interceptor';
     LoginComponent,
     AnnouncementsComponent,
     CreateAnnouncementComponent,
-    AdminComponent
+    AdminComponent,
+    CommentsComponent,
+    ViewAnnouncementComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,9 @@ import { TokenInterceptor } from './token-interceptor';
     NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    EditorModule
+  
   ],
   providers: [
     {

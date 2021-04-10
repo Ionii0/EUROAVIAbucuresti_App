@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
+  faPlus=faPlus;
   constructor() { }
 
   ngOnInit(): void {
