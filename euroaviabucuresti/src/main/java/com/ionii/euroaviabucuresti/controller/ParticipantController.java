@@ -18,10 +18,12 @@ public class ParticipantController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/participationStatus")
-    public ResponseEntity<Boolean> isParticipatingAlready(@RequestBody ParticipantDto participantDto){
+    @PostMapping("/participationStatus/{announcementId}")
+    public ResponseEntity<String> isParticipatingAlready(@PathVariable Long announcementId){
+       if (participantService.isParticipatingAlready(announcementId))
+        return ResponseEntity.status(HttpStatus.OK).body("true");
 
-        return new ResponseEntity<>(participantService.isParticipatingAlready(participantDto), HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.OK).body("false");
     }
 
     @GetMapping("/countParticipantsForAnnouncement/{announcementId}")

@@ -22,9 +22,11 @@ public class CommentService {
 
     public void save(CommentDto commentDto){
      Announcement announcement= announcementRepository.findByAnnouncementId(commentDto.getAnnouncementId());
-
+     int commentCount= announcement.getCommentCount();
+     announcement.setCommentCount(commentCount+1);
      Comment comment=commentMapper.map(commentDto,announcement, authService.getCurrentUser());
      commentRepository.save(comment);
+
     }
     public List<CommentDto> getAllCommentsForAnnouncement(Long announcementId){
       Optional<Announcement> announcement= announcementRepository.findById(announcementId);

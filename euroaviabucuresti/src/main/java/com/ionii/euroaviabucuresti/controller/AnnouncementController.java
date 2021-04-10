@@ -26,5 +26,9 @@ public class AnnouncementController {
     public ResponseEntity<List<AnnouncementDto>> getAllAnnouncements(){
      return  ResponseEntity.status(HttpStatus.OK).body(announcementService.getAll());
     }
+    @GetMapping("/{announcementId}")
+    public ResponseEntity<AnnouncementDto> getAnnouncement(@PathVariable Long announcementId){
+        return  ResponseEntity.status(HttpStatus.OK).body(announcementService.getAnnouncement(announcementId));
+    }
 
 }

@@ -29,16 +29,22 @@ public class ParticipantService {
         User user=authService.getCurrentUser();
         Participant participant=participantMapper.map(participantDto,announcement,user );
 
-        if(participantRepository.findByUserAndAnnouncement(user,announcement).isEmpty())
+      if(participantRepository.findByUserAndAnnouncement(user,announcement).isEmpty()){
             participantRepository.save(participant);
-        else
-            participantRepository.delete(participant);
+            int participantCount= announcement.getParticipantCount();
+            announcement.setParticipantCount(participantCount+1);
+      }
+        else {
+          participantRepository.deleteByUserAndAnnouncement(user, announcement);
+          int participantCount = announcement.getParticipantCount();
+          announcement.setParticipantCount(participantCount - 1);
+      }
 
     }
 
     @Transactional
-    public Boolean isParticipatingAlready(ParticipantDto participantDto) {
-        Announcement announcement= announcementRepository.findByAnnouncementId(participantDto.getAnnouncementId());
+    public Boolean isParticipatingAlready(Long announcementId) {
+        Announcement announcement= announcementRepository.findByAnnouncementId(announcementId);
         User user=authService.getCurrentUser();
         return !participantRepository.findByUserAndAnnouncement(user, announcement).isEmpty();
     }

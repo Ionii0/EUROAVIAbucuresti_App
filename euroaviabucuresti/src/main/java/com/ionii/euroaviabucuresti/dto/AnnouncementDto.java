@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.Instant;
+import java.util.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -18,6 +19,9 @@ public class AnnouncementDto {
     private int commentCount;
     private String body;
     private Instant created;
+    private Date date;
+
+
 
 
 

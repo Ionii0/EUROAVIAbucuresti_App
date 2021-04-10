@@ -33,7 +33,9 @@ public class AnnouncementService {
         return announcementRepository.findAll().stream().map(announcementMapper::mapAnnouncementToDto).collect(toList());
     }
 
-
-
-
+    @Transactional
+    public AnnouncementDto getAnnouncement( Long announcementId) {
+        Announcement announcement= announcementRepository.findByAnnouncementId(announcementId);
+        return announcementMapper.mapAnnouncementToDto(announcement);
+    }
 }

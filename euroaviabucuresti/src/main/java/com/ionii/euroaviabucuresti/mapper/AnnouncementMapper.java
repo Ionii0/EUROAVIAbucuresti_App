@@ -18,7 +18,8 @@ public interface AnnouncementMapper {
     @Mapping(target ="participantCount",source = "participantCount")
     @Mapping(target = "commentCount",source = "commentCount")
     @Mapping(target = "body",source = "body")
-    @Mapping(target = "created",expression ="java(java.time.Instant.now())" )
+    @Mapping(target = "created",source ="created" )
+    @Mapping(target="date",expression = "java(java.util.Date.from(announcement.getCreated()))")
     AnnouncementDto mapAnnouncementToDto(Announcement announcement);
 
 

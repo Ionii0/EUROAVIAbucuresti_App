@@ -7,14 +7,11 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 @Component
 @RequiredArgsConstructor
-public class SetupDataLoader implements
-        ApplicationListener<ContextRefreshedEvent> {
+public class SetupDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     boolean alreadySetup = false;
 
@@ -31,7 +28,7 @@ public class SetupDataLoader implements
         if (alreadySetup)
             return;
 
-        if(userRepository.findByMailEuroavia("admin@euroavia-bucuresti.ro").isEmpty()) {
+        if(userRepository.findByMailEuroavia("admin@euroavia-bucuresti.ro").isEmpty() && alreadySetup) {
         User user = new User();
         user.setFirstName("Admin");
         user.setLastName("Admin");

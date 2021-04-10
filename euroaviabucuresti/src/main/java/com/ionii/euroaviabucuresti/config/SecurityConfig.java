@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,7 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.cors().and().csrf().disable()
                     .authorizeRequests()
                     .antMatchers("/api/admin/**").hasAuthority("ADMIN")
+                    .antMatchers(HttpMethod.POST,"/api/announcement/**").hasAuthority("ADMIN")
                     .antMatchers("/api/auth/**").permitAll()
+                    .antMatchers(HttpMethod.GET,"/api/announcement/**").authenticated()
+                    .antMatchers(HttpMethod.GET,"/api/post/**").authenticated()
                     .anyRequest().authenticated();
         httpSecurity.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }

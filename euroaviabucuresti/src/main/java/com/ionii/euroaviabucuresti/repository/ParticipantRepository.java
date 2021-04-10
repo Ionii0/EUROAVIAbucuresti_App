@@ -6,6 +6,7 @@ import com.ionii.euroaviabucuresti.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.mail.Part;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,4 +16,8 @@ public interface ParticipantRepository extends JpaRepository<Participant,Long> {
    List<Participant> findByUserAndAnnouncement(User user, Announcement announcement);
 
    Integer countAllByAnnouncement(Optional<Announcement> announcement);
+
+   void deleteByUserAndAnnouncement(User user, Announcement announcement);
+
+
 }
