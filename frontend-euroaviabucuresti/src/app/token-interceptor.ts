@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
@@ -58,7 +58,7 @@ export class TokenInterceptor implements HttpInterceptor {
                 filter(result => result !== null),
                 take(1),
                 switchMap((res) => {
-                    return next.handle(this.addToken(req,
+                    return next.handle(this.addToken(res,
                         this.authService.getJwtToken()))
                 })
             );

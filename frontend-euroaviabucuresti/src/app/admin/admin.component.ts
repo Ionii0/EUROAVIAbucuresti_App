@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faBusinessTime, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -8,6 +8,7 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 })
 export class AdminComponent implements OnInit {
   faPlus=faPlus;
+  faBusinessTime=faBusinessTime;
   constructor() { }
 
   ngOnInit(): void {
