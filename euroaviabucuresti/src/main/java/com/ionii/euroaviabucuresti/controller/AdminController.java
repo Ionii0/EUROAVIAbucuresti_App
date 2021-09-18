@@ -5,9 +5,7 @@ import com.ionii.euroaviabucuresti.service.AdminService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,4 +19,16 @@ public class AdminController {
     public ResponseEntity<List<UserDto>> getAllUsers(){
         return  ResponseEntity.status(HttpStatus.OK).body(adminService.getAll());
     }
+    @PostMapping("/modifyPoints/{userId}/{nrOfPoints}")
+    public ResponseEntity<Void> modifyPoints(@PathVariable Long userId, @PathVariable int nrOfPoints){
+        adminService.modifyPoints(userId,nrOfPoints);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/modifyTokens/{userId}/{nrOfTokens}")
+    public ResponseEntity<Void> modifyTokens(@PathVariable Long userId, @PathVariable int nrOfTokens){
+        adminService.modifyTokens(userId,nrOfTokens);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
