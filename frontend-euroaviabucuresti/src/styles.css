@@ -4,9 +4,11 @@ body{
     height: 100%;
     background-color: #15202B;
     margin-top:70px;
-    
+
 }
 
 input.ng-invalid.ng-touched{
     border: 1px solid red;
 }
+
+

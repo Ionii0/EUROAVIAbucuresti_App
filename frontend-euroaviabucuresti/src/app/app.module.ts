@@ -20,6 +20,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
 import {CommentsComponent} from './comments/comments.component';
 import {ViewAnnouncementComponent} from './announcements/view-announcement/view-announcement.component';
 import {ManageUsersComponent} from './manage-users/manage-users.component';
+import {TableModule} from "primeng/table";
+import {CardModule} from "primeng/card";
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import {ManageUsersComponent} from './manage-users/manage-users.component';
     AdminComponent,
     CommentsComponent,
     ViewAnnouncementComponent,
-    ManageUsersComponent,
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +46,10 @@ import {ManageUsersComponent} from './manage-users/manage-users.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FontAwesomeModule,
-    EditorModule
-    ],
+    EditorModule,
+    TableModule,
+    CardModule
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
