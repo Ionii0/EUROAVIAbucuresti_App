@@ -13,8 +13,13 @@ export class ManageUsersComponent implements OnInit {
 
   constructor(private manageUsersService: ManageUsersService) {
     this.manageUsersService.getAllUsers().subscribe((data: Array<ManageUsersModel>) => {
+      data.forEach(user => {
+        if (user.firstName == null)
+          data = data.filter(x => x!= user);
+      })
       this.arrayUsers = data;
       console.log(this.arrayUsers);
+
     });
   }
 

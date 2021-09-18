@@ -4,4 +4,6 @@ export class ManageUsersModel {
   lastName: string;
   mailEuroavia: string;
   department: string;
+  activityPoints: number;
+  virtualToken:number;
 }
