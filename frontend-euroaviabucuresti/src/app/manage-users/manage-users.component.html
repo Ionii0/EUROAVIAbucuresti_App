@@ -1,25 +1,23 @@
 <p-card>
-  <p-table [value]="arrayUsers">
+  <p-table [value]="arrayUsers" >
     <ng-template pTemplate="header">
       <tr>
-        <th>Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Department</th>
-        <th>Tokens</th>
-        <th>Activity Points</th>
+        <th style="background:#1A1918">First Name</th>
+        <th style="background:#1A1918">Last Name</th>
+        <th style="background:#1A1918">Email</th>
+        <th style="background:#1A1918">Department</th>
+        <th style="background:#1A1918">Tokens</th>
+        <th style="background:#1A1918">Activity Points</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
       <tr>
-        <td>{{user.id}}</td>
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td>{{user.mailEuroavia}}</td>
-        <td>{{user.department}}</td>
-        <td>{{user.virtualToken}}</td>
-        <td>{{user.activityPoints}}</td>
+        <td style="background:#1A1918">{{user.firstName}}</td>
+        <td style="background:#1A1918">{{user.lastName}}</td>
+        <td style="background:#1A1918">{{user.mailEuroavia}}</td>
+        <td style="text-align: center;background:#1A1918">{{user.department}}</td>
+        <td style="background:#1A1918">{{user.virtualToken}}</td>
+        <td style="background:#1A1918">{{user.activityPoints}}</td>
       </tr>
     </ng-template>
   </p-table>

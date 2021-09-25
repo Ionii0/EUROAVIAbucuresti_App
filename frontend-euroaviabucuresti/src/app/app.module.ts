@@ -22,6 +22,7 @@ import {ViewAnnouncementComponent} from './announcements/view-announcement/view-
 import {ManageUsersComponent} from './manage-users/manage-users.component';
 import {TableModule} from "primeng/table";
 import {CardModule} from "primeng/card";
+import {DialogModule} from "primeng/dialog";
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {CardModule} from "primeng/card";
     FontAwesomeModule,
     EditorModule,
     TableModule,
-    CardModule
+    CardModule,
+    DialogModule
   ],
   providers: [
     {
