@@ -13,4 +13,5 @@ public interface AnnouncementRepository extends JpaRepository<Announcement,Long>
     List<Announcement> findByUser(User user);
     Announcement findByAnnouncementId(Long id);
     Optional<Announcement> findById(Long id);
+    List<Announcement> findByOrderByAnnouncementIdDesc();
 }

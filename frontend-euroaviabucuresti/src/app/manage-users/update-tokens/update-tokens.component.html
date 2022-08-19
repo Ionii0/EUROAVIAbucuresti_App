@@ -1,0 +1,15 @@
+<p-dialog header="Update Tokens for {{user.firstName}} {{user.lastName}}" [(visible)]="this.showDialog" appendTo="body" #dialog>
+  The user <label style="color:#64B5F6">{{user.firstName}} {{user.lastName}}</label>
+  has currently <label style="color:#64B5F6">{{user.virtualToken}}</label> tokens
+  <div class="p-grid p-fluid mt-2">
+    <div class="p-field p-col-12 p-md-3">
+      <label>Update tokens:</label>
+      <p-inputNumber class="mt-1" [(ngModel)]="this.newTokensValue" [showButtons]="true"
+                     inputId="stacked" mode="currency" currency="USD">
+      </p-inputNumber>
+      <button pButton pRipple type="button" label="Update"
+              class="p-button-sm mt-1" (click)="updateTokens($event)"></button>
+    </div>
+  </div>
+</p-dialog>
+

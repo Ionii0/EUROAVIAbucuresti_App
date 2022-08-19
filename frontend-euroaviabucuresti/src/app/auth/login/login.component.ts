@@ -1,49 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../shared/auth.service';
-import { LoginRequestPayload } from './login-request.payload';
+import {Component, OnInit} from '@angular/core';
+import {LoginRequestPayload} from "./login-request.payload";
+import {AuthService} from "../auth/auth.service";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  
-  loginForm:FormGroup;
-  loginRequestPayload:LoginRequestPayload;
-  isError:boolean;
-  
-  constructor(private authService:AuthService, private router: Router, private toastr: ToastrService ) { 
+
+  loginRequestPayload: LoginRequestPayload;
+  isError?: boolean;
+  password: string = "";
+  mailEuroavia: string = "";
+
+  constructor(private authService: AuthService, private router: Router, private toastr:ToastrService) {
     this.loginRequestPayload = {
-      mailEuroavia:'',
-      password:''
+      mailEuroavia: '',
+      password: ''
     }
   }
 
   ngOnInit(): void {
-   this.loginForm = new FormGroup({
-    mailEuroavia: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
-   })
   }
 
   login(): void {
-    this.loginRequestPayload.mailEuroavia=this.loginForm.get('mailEuroavia').value;
-    this.loginRequestPayload.password=this.loginForm.get('password').value;
+    this.loginRequestPayload.mailEuroavia = this.mailEuroavia;
+    this.loginRequestPayload.password = this.password;
 
-    this.authService.login(this.loginRequestPayload).
-      subscribe(data=>{
-      if(data){
-        this.isError=false;
-        this.router.navigateByUrl('/announcement-page');
+    this.authService.login(this.loginRequestPayload).subscribe(data => {
+      if (data) {
+        this.isError = false;
+        this.router.navigateByUrl('/announcement-page').then(()=>{});
         this.toastr.success('Login Successful');
-      } else{
-        this.isError=true;
+      } else {
+        this.isError = true;
       }
-    });
+    },
+      (() => {
+        this.toastr.error('Wrong Credentials');
+      }))
   }
+
 
 }

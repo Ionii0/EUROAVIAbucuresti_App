@@ -1,0 +1,12 @@
+<p-dialog header="Update Points for {{user.firstName}} {{user.lastName}}" [(visible)]="this.showDialog" appendTo="body" #dialog>
+  The user <label style="color:#64B5F6">{{user.firstName}} {{user.lastName}}</label> has currently <label style="color:#64B5F6">{{user.activityPoints}}</label> points
+  <div class="p-grid p-fluid mt-2">
+    <div class="p-field p-col-12 p-md-3">
+      <label>Update points:</label>
+      <p-inputNumber class="mt-1" [(ngModel)]="this.newPointsValue" [showButtons]="true">
+      </p-inputNumber>
+      <button pButton pRipple type="button" label="Update"
+              class="p-button-sm mt-1" (click)="updatePoints($event)"></button>
+    </div>
+  </div>
+</p-dialog>

@@ -17,16 +17,15 @@ import static java.util.stream.Collectors.toList;
 @Service
 @AllArgsConstructor
 @Slf4j
+@Transactional
 public class AdminService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-
     public List<UserDto> getAll() {
         return userRepository.findAllByOrderByLastName().stream().map(userMapper::mapUserToDto).collect(toList());
     }
-    @Transactional
     public void modifyPoints(Long userId, int nrOfPoints) {
         Optional<User> userOptional=userRepository.findByUserId(userId);
         if (userOptional.isPresent()){
@@ -34,7 +33,6 @@ public class AdminService {
             user.setActivityPoints(nrOfPoints);
         }
     }
-    @Transactional
     public void modifyTokens(Long userId, int nrOfTokens) {
         Optional<User> userOptional=userRepository.findByUserId(userId);
         if (userOptional.isPresent()){
@@ -42,5 +40,4 @@ public class AdminService {
             user.setVirtualToken(nrOfTokens);
         }
     }
-
 }

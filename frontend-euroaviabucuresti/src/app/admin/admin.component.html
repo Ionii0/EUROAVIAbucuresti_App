@@ -1,24 +1,16 @@
-<div class="admin-body ">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="col-md-11 offset-md-3">
-          <div class="card card border-0">
-            <div class="card-body">
-              <span>
-                <button type="button" class="btn" routerLink="/create-announcement">
-                  <fa-icon [icon]="faPlus"></fa-icon> Add Announcement
-                </button>
-                <button type="button" class="btn" routerLink="/manage-users" id="btn-manage-users">
-                    <fa-icon [icon]="faBusinessTime"></fa-icon> Manage Users
-                </button>
-              </span>
-            </div>
-          </div>
-        </div>
+<div class="col-10 mt-4" [style]="{'margin-left':'8%'}">
+  <p-card class="card">
 
-      </div>
-    </div>
+    <button pButton pRipple type="button"
+            class="p-button-outlined col-6 sm:col-3 sm:col-offset-3 text-xs sm:text-base"
+            routerLink="/create-announcement">
+      <fa-icon [icon]="faPlus" class="sm:ml-4 sm:mr-2"></fa-icon> Add Announcement
+    </button>
+    <button pButton pRipple type="button"
+            class="p-button-outlined col-5 sm:col-3 text-xs sm:text-base ml-2"
+            routerLink="/manage-users">
+      <fa-icon [icon]="faBusinessTime" class="sm:ml-4 sm:mr-2"></fa-icon> Manage Users
 
-  </div>
+    </button>
+  </p-card>
 </div>

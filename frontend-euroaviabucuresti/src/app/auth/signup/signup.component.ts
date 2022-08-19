@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../shared/auth.service';
-import { RegisterRequestPayload } from './register-request.payload';
+import {Component, OnInit} from '@angular/core';
+import {ToastrService} from "ngx-toastr";
+import {AuthService} from "../auth/auth.service";
+import {RegisterRequestPayload} from "./register-request.payload";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -11,47 +10,45 @@ import { RegisterRequestPayload } from './register-request.payload';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
-  signupForm:FormGroup;
+  emailEuroavia: string = "";
+  emailPersonal: string = "";
+  firstName: string = "";
+  lastName: string = "";
+  department: string = "";
+  password: string = "";
+  passwordConfirm: string = "";
   registerRequestPayload:RegisterRequestPayload;
 
-  constructor(private authService:AuthService, private toastr:ToastrService) { 
+
+  constructor(private authService: AuthService, private toastr: ToastrService, private router:Router) {
     this.registerRequestPayload={
       emailPersonal: '',
       password: '',
-      emailEuroavia: '', 
+      emailEuroavia: '',
       department: '',
-      firstName: '', 
+      firstName: '',
       lastName: ''
     }
   }
 
   ngOnInit(): void {
-    this.signupForm= new FormGroup({
-      emailEuroavia: new FormControl('', [Validators.required, Validators.email]),
-      emailPersonal: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-      department: new FormControl('', Validators.required),
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required)
-    })
   }
-
   signup(): void {
-    this.registerRequestPayload.emailEuroavia=this.signupForm.get('emailEuroavia').value;
-    this.registerRequestPayload.emailPersonal=this.signupForm.get('emailPersonal').value;
-    this.registerRequestPayload.password=this.signupForm.get('password').value;
-    this.registerRequestPayload.department=this.signupForm.get('department').value;
-    this.registerRequestPayload.firstName=this.signupForm.get('firstName').value;
-    this.registerRequestPayload.lastName=this.signupForm.get('lastName').value;
+
+    this.registerRequestPayload.firstName=this.firstName;
+    this.registerRequestPayload.lastName=this.lastName;
+    this.registerRequestPayload.department=this.department;
+    this.registerRequestPayload.emailPersonal=this.emailPersonal;
+    this.registerRequestPayload.emailEuroavia=this.emailEuroavia;
+    this.registerRequestPayload.password=this.passwordConfirm;
 
     this.authService.signup(this.registerRequestPayload)
-    .subscribe(()=>{
-      this.toastr.success("Signup successful! Please check your inbox for activation!");
-    }, ()=>{
-      this.toastr.error('Registration failed!');  
-    });
-    
-  }
+      .subscribe(()=>{
+        this.router.navigateByUrl('/login').then(()=>{});
+        this.toastr.success("Signup successful! Please check your inbox for activation!");
+      }, ()=>{
+        this.toastr.error('Registration failed!');
+      });
 
+  }
 }

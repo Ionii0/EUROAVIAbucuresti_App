@@ -1,0 +1,31 @@
+<div class="col-8" [style]="{'margin-left':'15%'}">
+  <p-card class="card">
+    <ng-template pTemplate="header">
+      <div class="card-header">
+        <h5 class="ml-2 pt-2" style="color:grey;">{{announcementData.date|date:"short"}}</h5>
+        <h3 style="text-align: center">{{announcementData.title}}</h3>
+      </div>
+    </ng-template>
+    <div>
+      <p class="card-text" [innerHtml]="announcementData.body"></p>
+    </div>
+    <p-divider></p-divider>
+    <span>
+      <a class="btnComments  text-xs sm:text-base" role="button" (click)="goToAnnouncement(announcementData.id)">
+        <i class="pi pi-comments"></i>
+       Comments({{announcementData.commentCount}})
+      </a>
+    </span>
+    <span *ngIf="announcementData.isParticipant==false">
+                      <a class="btnParticipate text-xs sm:text-base" role="button" (click)="participateOrWithdraw(announcementData.id)">
+                        <fa-icon [icon]="faPlane"></fa-icon>Particip({{announcementData.participantCount}})
+                      </a>
+                    </span>
+    <span *ngIf="announcementData.isParticipant==true">
+                      <a class="btnParticipate  text-xs sm:text-base" role="button" (click)="participateOrWithdraw(announcementData.id)">
+                        <fa-icon [icon]="faPlaneArrival"></fa-icon>Renunt({{announcementData.participantCount}})
+                      </a>
+    </span>
+  </p-card>
+</div>
+

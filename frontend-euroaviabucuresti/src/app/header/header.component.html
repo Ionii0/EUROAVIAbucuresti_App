@@ -1,19 +1,21 @@
-<header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-      <div class="flex-grow-1">
-        <a aria-label="Home" class="logo" routerLink="/">
-          <img src="/assets/sigla.png" style="height:50px;">
-          <span class="euroaviabucuresti-text">
-             EUROAVIA-Bucuresti
-            </span>
-        </a>
-      </div>
-      <div class="flex-grow-1 float-right" *ngIf="isLoggedIn()"> 
-        <button class="float-right logout mr-2" (click)="logout()" routerLink="/login">Logout</button>
-      </div>
-    <div class="flex-grow-1 float-right" *ngIf="!isLoggedIn()">
-      <a class="float-right signup mr-2" routerLink="/signup">Sign up</a>
-      <a class="float-right login mr-2" routerLink="/login">Login</a>
-    </div>
-    </nav>
-  </header>
+<div *ngIf="isLoggedIn() && this.isAdmin">
+  <p-menubar [model]="itemsLoggedInAsAdmin">
+    <a aria-label="Home" class="logo" routerLink="/announcement-page">
+      <img src="/assets/sigla.png" style="height:50px;">
+    </a>
+  </p-menubar>
+</div>
+<div *ngIf="isLoggedIn() && !this.isAdmin">
+  <p-menubar [model]="itemsLoggedInAsUser">
+    <a aria-label="Home" class="logo" routerLink="/announcement-page">
+      <img src="/assets/sigla.png" style="height:50px;">
+    </a>
+  </p-menubar>
+</div>
+<div *ngIf="!isLoggedIn()">
+  <p-menubar [model]="itemsLoggedOut">
+    <a aria-label="Home" class="logo" routerLink="#">
+      <img src="/assets/sigla.png" style="height:50px;">
+    </a>
+  </p-menubar>
+</div>

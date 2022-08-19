@@ -19,16 +19,15 @@ public class AdminController {
     public ResponseEntity<List<UserDto>> getAllUsers(){
         return  ResponseEntity.status(HttpStatus.OK).body(adminService.getAll());
     }
-    @PostMapping("/modifyPoints/{userId}/{nrOfPoints}")
+    @GetMapping("/modifyPoints/{userId}/{nrOfPoints}")
     public ResponseEntity<Void> modifyPoints(@PathVariable Long userId, @PathVariable int nrOfPoints){
         adminService.modifyPoints(userId,nrOfPoints);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/modifyTokens/{userId}/{nrOfTokens}")
+    @GetMapping("/modifyTokens/{userId}/{nrOfTokens}")
     public ResponseEntity<Void> modifyTokens(@PathVariable Long userId, @PathVariable int nrOfTokens){
         adminService.modifyTokens(userId,nrOfTokens);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

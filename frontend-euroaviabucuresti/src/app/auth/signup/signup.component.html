@@ -1,86 +1,44 @@
-<div class="register-section">
-    <div class="row justify-content-center">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header" style="text-align: center">
-            <h4>Register</h4>
-          </div>
-          <div class="card-body">
-            <form (ngSubmit)="signup()" [formGroup]="signupForm">
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right" for="email_address">E-Mail
-                  Address</label>
-                <div class="col-md-6">
-                  <input [formControlName]="'emailPersonal'" class="form-control" id="email_address" name="email-address"
-                         type="email">
-                  <span *ngIf="!signupForm.get('emailPersonal').valid && signupForm.get('emailPersonal').touched"
-                        class="help-block">Please enter a valid email</span>
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">EUROAVIA Mail </label>
-                <div class="col-md-6">
-                  <label for="email_Euroavia"></label>
-                  <input [formControlName]="'emailEuroavia'" class="form-control" id="email_Euroavia" type="email">
-                  <span *ngIf="!signupForm.get('emailEuroavia').valid && signupForm.get('emailEuroavia').touched"
-                        class="help-block">Please enter a valid EUROAVIA mail</span>
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">First Name</label>
-                <div class="col-md-6">
-                    <input [formControlName]="'firstName'" class="form-control" type="text">
-                  <span *ngIf="!signupForm.get('firstName').valid && signupForm.get('firstName').touched"
-                        class="help-block">Please enter a valid name</span>
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">Last Name</label>
-                <div class="col-md-6">
-                  
-                    <input [formControlName]="'lastName'" class="form-control" type="text">
-                  
-                  <span *ngIf="!signupForm.get('lastName').valid && signupForm.get('lastName').touched"
-                        class="help-block">Please enter a valid name</span>
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">Department</label>
-                <div class="col-md-6">
-                
-                    <input [formControlName]="'department'" class="form-control" type="text">
-                  
-                  <span *ngIf="!signupForm.get('department').valid && signupForm.get('department').touched"
-                        class="help-block">Please enter a valid department</span>
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right" for="password">Password</label>
-                <div class="col-md-6">
-                  <input [formControlName]="'password'" class="form-control" id="password" name="password"
-                         type="password">
-                  <span *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched"
-                        class="help-block">Please enter a valid password</span>
-                </div>
-              </div>
-  
-              <span class="col-md-6 offset-md-4">
-                <button class="sign-up" type="submit">
-                  Sign Up
-                </button>
-                <span class="form-group row offset-md-4" style="padding-left: 15px">Existing user? <a routerLink="/login">Log In</a></span>
-              </span>
-            </form>
-          </div>
-        </div>
+<div class="col-8" [style]="{'margin-left':'18%'}">
+  <p-card class="card">
+
+    <ng-template pTemplate="header" class="card">
+      <div class="card-header">
+        <h1>SignUp</h1>
       </div>
-      <div class="col-md-3"></div>
+    </ng-template>
+
+    <div class="p-grid">
+      <div class="p-inputgroup col-12">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText placeholder="First Name" [(ngModel)]="firstName"/>
+      </div>
+      <div class="p-inputgroup col-12">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText placeholder="Last Name" [(ngModel)]="lastName"/>
+      </div>
+      <div class="p-inputgroup col-12">
+        <span class="p-inputgroup-addon"><i class="pi pi-users"></i></span>
+        <input type="text" pInputText placeholder="Department" [(ngModel)]="department"/>
+      </div>
+      <div class="p-inputgroup col-12">
+        <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+        <input type="text" pInputText placeholder="E-mail" [(ngModel)]="emailPersonal"/>
+      </div>
+      <div class="p-inputgroup col-12">
+        <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+        <input type="text" pInputText placeholder="E-mail EUROAVIA" [(ngModel)]="emailEuroavia"/>
+      </div>
+      <div class="p-inputgroup col-12">
+        <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+        <input type="password" pPassword  placeholder="Password" [(ngModel)]="password"/>
+      </div>
+      <div class="p-inputgroup col-12">
+        <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+        <input type="password" pPassword  placeholder="Confirm password" [(ngModel)]="passwordConfirm"/>
+      </div>
+      <button pButton pRipple type="button" label="SignUp" class="ml-2 p-button" ></button>
     </div>
-  </div>
-  
+
+  </p-card>
+</div>
+

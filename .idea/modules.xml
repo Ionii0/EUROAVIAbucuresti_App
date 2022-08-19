@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/EUROAVIA_site.iml" filepath="$PROJECT_DIR$/.idea/EUROAVIA_site.iml" />
       <module fileurl="file://$PROJECT_DIR$/euroaviabucuresti/euroaviabucuresti.iml" filepath="$PROJECT_DIR$/euroaviabucuresti/euroaviabucuresti.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../webclient/webclient.iml" filepath="$PROJECT_DIR$/../webclient/webclient.iml" />
     </modules>
   </component>
 </project>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ManageUsersService} from '../services/manage-users/manage-users.service';
 import {ManageUsersModel} from '../services/manage-users/manage-users-model';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-manage-users',
@@ -10,6 +11,7 @@ import {ManageUsersModel} from '../services/manage-users/manage-users-model';
 export class ManageUsersComponent implements OnInit {
 
   public arrayUsers: Array<ManageUsersModel> = [];
+
 
   constructor(private manageUsersService: ManageUsersService) {
     this.manageUsersService.getAllUsers().subscribe((data: Array<ManageUsersModel>) => {

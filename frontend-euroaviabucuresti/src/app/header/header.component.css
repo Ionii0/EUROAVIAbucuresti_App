@@ -1,49 +1,16 @@
-header {
-    /*noinspection CssInvalidPropertyValue*/
-    
-    
-     border-color:#111112;
-  }
-  
-  
-  .euroaviabucuresti-text {
-    font-weight: 700;
-    height: 50px;
-    width: 50px;
-  }
-  
-  .logo {
-    text-decoration: none;
-  }
-  
-  
-  .login, .signup, .logout {
-    background-color: transparent;
-    border-color: #0079D3;
-    color: #0079D3;
-    fill: #0079D3;
-    border: 1px solid;
-    border-radius: 4px;
-    box-sizing: border-box;
-    text-align: center;
-    letter-spacing: 1px;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .5px;
-    line-height: 24px;
-    text-transform: uppercase;
-    padding: 3px 16px;
-    opacity: 1;
-  }
-  
-  .signup {
-    background-color: #0079D3;
-    border-color: #0079D3;
-    color: aliceblue;
-  }
-  
-  .signup:hover {
-    opacity: 0.6;
-  }
-  
+:host ::ng-deep .p-menubar{
+  background-color:#15202B;
+  color:white;
+  border-color: #1A1918;
+
+  box-sizing: border-box;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+
+}
+:host ::ng-deep .p-menubar-root-list{
+  background-color:#15202B;
+  border-color: #1A1918;
+}
+.logo {
+  text-decoration: none;
+}

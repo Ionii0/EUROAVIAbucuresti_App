@@ -30,7 +30,7 @@ public class AnnouncementService {
 
     @Transactional
     public List<AnnouncementDto> getAll(){
-        return announcementRepository.findAll().stream().map(announcementMapper::mapAnnouncementToDto).collect(toList());
+        return announcementRepository.findByOrderByAnnouncementIdDesc().stream().map(announcementMapper::mapAnnouncementToDto).collect(toList());
     }
 
     @Transactional

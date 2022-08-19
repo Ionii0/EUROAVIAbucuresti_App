@@ -1,0 +1,43 @@
+<p-contextMenu #cm [model]="clickMenu" appendTo="body" event="click contextmenu"></p-contextMenu>
+
+<p-table #dt1 [value]="arrayUsers"  [(contextMenuSelection)]="selectedUser" [contextMenu]="cm"  [style]="{'margin':'20px'}" styleClass="p-datatable-sm p-datatable-gridlines" responsiveLayout="scroll"
+         [rows]="10" [showCurrentPageReport]="true"
+         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} users"
+         [globalFilterFields]="['firstName','lastName','mailEuroavia','department']">
+  <ng-template pTemplate="caption">
+    <div class="flex caption">
+      <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+      <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Search keyword" />
+                </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="firstName">First Name<p-sortIcon field="firstName"></p-sortIcon></th>
+      <th pSortableColumn="lastName">Last Name<p-sortIcon field="lastName"></p-sortIcon></th>
+      <th pSortableColumn="mailEuroavia">Email<p-sortIcon field="mailEuroavia"></p-sortIcon></th>
+      <th pSortableColumn="department">Department<p-sortIcon field="department"></p-sortIcon></th>
+      <th pSortableColumn="virtualToken">Tokens<p-sortIcon field="virtualToken"></p-sortIcon></th>
+      <th pSortableColumn="activityPoints">Activity Points<p-sortIcon field="activityPoints"></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user >
+    <tr [pContextMenuRow]="user" class="hover:bg-bluegray-500">
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.mailEuroavia}}</td>
+      <td>{{user.department}}</td>
+      <td>{{user.virtualToken}}</td>
+      <td>{{user.activityPoints}}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<div *ngIf="showPointsDialog">
+  <app-update-points [showDialog]="this.showPointsDialog" [user]="this.selectedUser" (deleteSelectedUSer)="this.deleteSelectedUser()"></app-update-points>
+</div>
+<div *ngIf="showTokensDialog">
+  <app-update-tokens [showDialog]="this.showTokensDialog" [user]="this.selectedUser" (deleteSelectedUSer)="this.deleteSelectedUser()"></app-update-tokens>
+</div>
